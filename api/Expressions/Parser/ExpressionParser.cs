@@ -1,4 +1,5 @@
 ﻿using Expressions.Enums;
+using Expressions.Exceptions;
 using Expressions.Interfaces;
 using Expressions.Models;
 using Expressions.Utility;
@@ -8,15 +9,20 @@ namespace Expressions.Parser;
 public class ExpressionParser : IExpressionParser
 {
     private readonly IArithmeticsContainer _operationsContainer;
+    private readonly IExpressionValidator _expressionValidator;
 
-    public ExpressionParser(IArithmeticsContainer operationsContainer)
+    public ExpressionParser(IArithmeticsContainer operationsContainer, IExpressionValidator expressionValidator)
     {
         _operationsContainer = operationsContainer;
+        _expressionValidator = expressionValidator;
     }
 
     // Преобразование в обратную польскую запись с помощью алгоритма Shunting Yard
     public Stack<RplElement> Parse(string expression)
     {
+        if (_expressionValidator.ContainsIllegalCharacters(expression))
+            throw new InvalidInputException("Input contains illegal characters");
+
         var (operators, rplOutput) = (new Stack<ExpressionOperator>(), new Stack<RplElement>());
         var tokens = ExpressionTokenizer.ReadTokens(expression).Select(m => m.Value);
 

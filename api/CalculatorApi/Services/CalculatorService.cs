@@ -15,10 +15,26 @@ public class CalculatorService : ICalculatorService
         _rplCalculator = rplCalculator;
     }
 
+    public double Add(int a, int b) =>
+        a + b;
+
+    public double Subtract(int a, int b) =>
+        a - b;
+
+    public double Multiply(int a, int b) =>
+        a * b;
+
+    public double Divide(int a, int b) =>
+        a / (double)b;
+
+
+    public double Sqrt(int a) =>
+        Math.Sqrt(a);
+
     public double CalculateExpression(string expression)
     {
         var rpl = _expressionParser.Parse(expression);
-       
+
         return _rplCalculator.Calculate(rpl);
     }
 }

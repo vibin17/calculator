@@ -30,7 +30,7 @@ public class RplCalculator : IRplCalculator
                 var result = current.Operation.Function(left, right);
 
                 if (double.IsNaN(result) || double.IsInfinity(result))
-                    throw new InvalidInputException("Attempt to divide by zero)");
+                    throw new InvalidInputException("Attempt to divide by zero");
 
                 return result;
             }

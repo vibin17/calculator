@@ -3,9 +3,14 @@ using Expressions.Calculator;
 using Expressions.Containers;
 using Expressions.Models;
 using Expressions.Parser;
+using Expressions.Validators;
 
 var expression = "0,1 + 0,2";
-var rpl = new ExpressionParser(new ArithmeticsContainer()).Parse(expression);
+var rpl = new ExpressionParser(
+    new ArithmeticsContainer(), 
+    new ExpressionValidator()
+).Parse(expression);
+
 var rplCopy = new Stack<RplElement>(rpl.Reverse());
 
 var result = new RplCalculator().Calculate(rplCopy);
