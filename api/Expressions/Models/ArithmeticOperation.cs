@@ -1,6 +1,4 @@
-﻿using Expressions.Enums;
-
-namespace Expressions.Models;
+﻿namespace Expressions.Models;
 
 public class ArithmeticOperation
 {
