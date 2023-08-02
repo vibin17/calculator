@@ -15,7 +15,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddTransient<IOperationsContainer, OperationsContainer>();
+builder.Services.AddTransient<IArithmeticsContainer, ArithmeticsContainer>();
 builder.Services.AddTransient<ICalculatorService, CalculatorService>();
 builder.Services.AddTransient<IExpressionParser, ExpressionParser>();
 builder.Services.AddTransient<IRplCalculator, RplCalculator>();

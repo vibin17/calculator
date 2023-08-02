@@ -5,7 +5,7 @@ using Expressions.Models;
 using Expressions.Parser;
 
 var expression = "3 * (1 + 2 ^ 2) - 1";
-var rpl = new ExpressionParser(new OperationsContainer()).Parse(expression);
+var rpl = new ExpressionParser(new ArithmeticsContainer()).Parse(expression);
 var rplCopy = new Stack<RplElement>(rpl.Reverse());
 
 var result = new RplCalculator().Calculate(rplCopy);

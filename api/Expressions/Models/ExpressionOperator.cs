@@ -12,10 +12,9 @@ public class ExpressionOperator
 
     [MemberNotNullWhen(true, nameof(Operation))]
     public bool IsArithmeticOperation =>
-        Type is OperatorType.Operation;
+        Type is OperatorType.Arithmetic;
 
     public ArithmeticOperation? Operation { get; init; }
 
-    public override string ToString() =>
-        Sign;
+    public override string ToString() => Sign;
 }

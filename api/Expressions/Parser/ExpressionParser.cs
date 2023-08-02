@@ -7,9 +7,9 @@ namespace Expressions.Parser;
 
 public class ExpressionParser : IExpressionParser
 {
-    private readonly IOperationsContainer _operationsContainer;
+    private readonly IArithmeticsContainer _operationsContainer;
 
-    public ExpressionParser(IOperationsContainer operationsContainer)
+    public ExpressionParser(IArithmeticsContainer operationsContainer)
     {
         _operationsContainer = operationsContainer;
     }
@@ -89,7 +89,7 @@ public class ExpressionParser : IExpressionParser
         if (IsArithmeticOperator(input))
             return new()
             {
-                Type = OperatorType.Operation,
+                Type = OperatorType.Arithmetic,
                 Sign = input,
                 Operation = _operationsContainer.GetOperation(input)
             };

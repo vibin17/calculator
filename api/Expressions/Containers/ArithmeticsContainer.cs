@@ -3,7 +3,7 @@ using Expressions.Models;
 
 namespace Expressions.Containers;
 
-public class OperationsContainer : IOperationsContainer
+public class ArithmeticsContainer : IArithmeticsContainer
 {
     private readonly ArithmeticOperation _add = new() { Priority = 1, Sign = "+", Function = (a, b) => a + b };
 

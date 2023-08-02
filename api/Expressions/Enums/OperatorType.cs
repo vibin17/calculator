@@ -2,5 +2,5 @@
 
 public enum OperatorType
 {
-    Operation, LeftParenthesis, RightParenthesis
+    Arithmetic, LeftParenthesis, RightParenthesis
 }

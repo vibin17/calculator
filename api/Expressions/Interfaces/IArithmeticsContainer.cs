@@ -2,7 +2,7 @@
 
 namespace Expressions.Interfaces;
 
-public interface IOperationsContainer
+public interface IArithmeticsContainer
 {
     public ArithmeticOperation GetOperation(string input);
 }
