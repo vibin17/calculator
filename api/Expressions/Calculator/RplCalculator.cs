@@ -23,8 +23,7 @@ public class RplCalculator : IRplCalculator
                 if (rplExpression.Count > 0)
                     left = Walk();
 
-                else if (current.Operation.Type is not 
-                    (ArithmeticOperationType.Add or ArithmeticOperationType.Subtract))
+                else if (!current.Operation.MayBeUnary)
                     throw new IllegalInputException("Illegal unary operation");
 
                 var result = current.Operation.Function(left, right);
