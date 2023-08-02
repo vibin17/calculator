@@ -52,10 +52,20 @@ public class CalculatorController : ControllerBase
         return _calculatorService.Divide(a, b);
     }
 
-    [HttpGet("sqrt")]
-    public CalculatorResult Sqrt([FromQuery][Required] int a)
+    [HttpGet("pow")]
+    public CalculatorResult Pow(
+        [FromQuery][Required] int a,
+        [FromQuery][Required] int b)
     {
-        return _calculatorService.Sqrt(a);
+        return _calculatorService.Pow(a, b);
+    }
+
+    [HttpGet("root")]
+    public CalculatorResult Root(
+        [FromQuery][Required] int a,
+        [FromQuery][Required] int b)
+    {
+        return _calculatorService.Root(a, b);
     }
 
     [HttpGet("expr")]

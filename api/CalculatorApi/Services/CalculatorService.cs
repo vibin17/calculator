@@ -34,9 +34,11 @@ public class CalculatorService : ICalculatorService
         return new() { Result = a / (double)b };
     }
 
+    public CalculatorResult Pow(int a, int b) =>
+        new() { Result = Math.Pow(a, b) };
 
-    public CalculatorResult Sqrt(int a) =>
-        new() { Result = Math.Sqrt(a) };
+    public CalculatorResult Root(int a, int b) =>
+        new() { Result = Math.Pow(a, 1/(double)b) };
 
     public CalculatorResult CalculateExpression(string expression)
     {

@@ -12,7 +12,9 @@ public interface ICalculatorService
 
     public CalculatorResult Divide(int a, int b);
 
-    public CalculatorResult Sqrt(int a);
+    public CalculatorResult Pow(int a, int b);
+
+    public CalculatorResult Root(int a, int b);
 
     public CalculatorResult CalculateExpression(string expression);
 }

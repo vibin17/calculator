@@ -6,6 +6,7 @@ using Expressions.Containers;
 using Expressions.Interfaces;
 using Expressions.Parser;
 using Expressions.Validators;
+using Microsoft.AspNetCore.HttpLogging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,11 @@ builder.Services.AddCors(options =>
     options.AddPolicy("CORS", policy =>
         policy.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin()));
 
+builder.Services.AddHttpLogging(options =>
+{
+    options.LoggingFields = HttpLoggingFields.RequestPropertiesAndHeaders |
+        HttpLoggingFields.RequestBody | HttpLoggingFields.ResponsePropertiesAndHeaders | HttpLoggingFields.ResponseBody;
+});
 
 builder.Services.AddControllers();
 
