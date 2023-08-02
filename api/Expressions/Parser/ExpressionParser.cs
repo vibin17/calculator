@@ -22,7 +22,7 @@ public class ExpressionParser : IExpressionParser
 
         foreach (var token in tokens)
         {
-            if (int.TryParse(token, out var number))
+            if (double.TryParse(token, out var number))
             {
                 rplOutput.Push(new() { Number = number });
 

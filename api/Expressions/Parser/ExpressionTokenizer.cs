@@ -4,7 +4,7 @@ namespace Expressions.Utility;
 
 public static partial class ExpressionTokenizer
 {
-    [GeneratedRegex(@"\w+|[-+*\/^\(\)]", RegexOptions.Multiline | RegexOptions.Compiled)]
+    [GeneratedRegex(@"\d+[,]\d+|\d+|[-+*\/^\(\)]", RegexOptions.Multiline | RegexOptions.Compiled)]
     private static partial Regex TokenRegex();
 
     public static MatchCollection ReadTokens(string expression) =>

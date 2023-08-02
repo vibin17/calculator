@@ -2,7 +2,7 @@
 
 public class RplElement
 {
-    public int Number { get; init; }
+    public double Number { get; init; }
 
     public ArithmeticOperation? Operation { get; init; }
 

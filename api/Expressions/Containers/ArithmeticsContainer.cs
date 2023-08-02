@@ -1,19 +1,50 @@
-﻿using Expressions.Interfaces;
+﻿using Expressions.Enums;
+using Expressions.Interfaces;
 using Expressions.Models;
 
 namespace Expressions.Containers;
 
 public class ArithmeticsContainer : IArithmeticsContainer
 {
-    private readonly ArithmeticOperation _add = new() { Priority = 1, Sign = "+", Function = (a, b) => a + b };
+    private readonly ArithmeticOperation _add = new() 
+    { 
+        Type = ArithmeticOperationType.Add, 
+        Priority = 1, 
+        Sign = "+", 
+        Function = (a, b) => a + b 
+    };
 
-    private readonly ArithmeticOperation _sub = new() { Priority = 1, Sign = "-", Function = (a, b) => a - b };
+    private readonly ArithmeticOperation _sub = new() 
+    {
+        Type = ArithmeticOperationType.Subtract,
+        Priority = 1, 
+        Sign = "-", 
+        Function = (a, b) => a - b 
+    };
 
-    private readonly ArithmeticOperation _mul = new() { Priority = 2, Sign = "*", Function = (a, b) => a * b };
+    private readonly ArithmeticOperation _mul = new() 
+    { 
+        Type = ArithmeticOperationType.Multiply,
+        Priority = 2, 
+        Sign = "*",
+        Function = (a, b) => a * b 
+    };
 
-    private readonly ArithmeticOperation _div = new() { Priority = 2, Sign = "/", Function = (a, b) => a / b };
+    private readonly ArithmeticOperation _div = new() 
+    { 
+        Type = ArithmeticOperationType.Divide,
+        Priority = 2, 
+        Sign = "/", 
+        Function = (a, b) => a / b 
+    };
 
-    private readonly ArithmeticOperation _pow = new() { Priority = 3, Sign = "^", Function = (a, b) => Math.Pow(a, b) };
+    private readonly ArithmeticOperation _pow = new() 
+    { 
+        Type = ArithmeticOperationType.Power,
+        Priority = 3, 
+        Sign = "^", 
+        Function = (a, b) => Math.Pow(a, b) 
+    };
 
     public ArithmeticOperation GetOperation(string input) =>
         input switch
