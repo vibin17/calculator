@@ -10,7 +10,7 @@ namespace CalculatorApi.Controllers;
 
 [ApiController]
 [Route("calc")]
-[IllegalInputException]
+[ExceptionHandler]
 public class CalculatorController : ControllerBase
 {
     private readonly ICalculatorService _calculatorService;
