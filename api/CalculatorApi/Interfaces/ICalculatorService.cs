@@ -1,16 +1,18 @@
-﻿namespace CalculatorApi.Interfaces;
+﻿using CalculatorApi.Dto;
+
+namespace CalculatorApi.Interfaces;
 
 public interface ICalculatorService
 {
-    public double Add(int a, int b);
+    public CalculatorResult Add(int a, int b);
 
-    public double Subtract(int a, int b);
+    public CalculatorResult Subtract(int a, int b);
 
-    public double Multiply(int a, int b);
+    public CalculatorResult Multiply(int a, int b);
 
-    public double Divide(int a, int b);
+    public CalculatorResult Divide(int a, int b);
 
-    public double Sqrt(int a);
+    public CalculatorResult Sqrt(int a);
 
-    public double CalculateExpression(string expression);
+    public CalculatorResult CalculateExpression(string expression);
 }

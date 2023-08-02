@@ -1,3 +1,4 @@
+using CalculatorApi.Dto;
 using CalculatorApi.Filters;
 using CalculatorApi.Interfaces;
 
@@ -20,7 +21,7 @@ public class CalculatorController : ControllerBase
     }
 
     [HttpGet("add")]
-    public double Add(
+    public CalculatorResult Add(
         [FromQuery][Required] int a, 
         [FromQuery][Required] int b)
     {
@@ -28,7 +29,7 @@ public class CalculatorController : ControllerBase
     }
 
     [HttpGet("sub")]
-    public double Subtract(
+    public CalculatorResult Subtract(
         [FromQuery][Required] int a, 
         [FromQuery][Required] int b)
     {
@@ -36,7 +37,7 @@ public class CalculatorController : ControllerBase
     }
 
     [HttpGet("mul")]
-    public double Multiply(
+    public CalculatorResult Multiply(
         [FromQuery][Required] int a, 
         [FromQuery][Required] int b)
     {
@@ -44,7 +45,7 @@ public class CalculatorController : ControllerBase
     }
 
     [HttpGet("div")]
-    public double Divide(
+    public CalculatorResult Divide(
         [FromQuery][Required] int a, 
         [FromQuery][Required] int b)
     {
@@ -52,13 +53,13 @@ public class CalculatorController : ControllerBase
     }
 
     [HttpGet("sqrt")]
-    public double Sqrt([FromQuery][Required] int a)
+    public CalculatorResult Sqrt([FromQuery][Required] int a)
     {
         return _calculatorService.Sqrt(a);
     }
 
     [HttpGet("expr")]
-    public double CalculateExpression([FromQuery][Required] string expression)
+    public CalculatorResult CalculateExpression([FromQuery][Required] string expression)
     {
         return _calculatorService.CalculateExpression(expression);
     }
