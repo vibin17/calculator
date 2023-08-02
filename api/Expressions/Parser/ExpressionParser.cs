@@ -23,14 +23,14 @@ public class ExpressionParser : IExpressionParser
         if (_expressionValidator.ContainsIllegalCharacters(expression))
             throw new IllegalInputException("Input contains illegal characters");
 
-        var (operators, rplOutput) = (new Stack<ExpressionOperator>(), new Stack<RplElement>());
+        var (operators, rplOutput) = (new Stack<ExpressionOperator>(), new List<RplElement>());
         var tokens = ExpressionTokenizer.ReadTokens(expression).Select(m => m.Value);
 
         foreach (var token in tokens)
         {
             if (double.TryParse(token, out var number))
             {
-                rplOutput.Push(new() { Number = number });
+                rplOutput.Add(new() { Number = number });
 
                 continue;
             }
@@ -71,19 +71,21 @@ public class ExpressionParser : IExpressionParser
 
                 continue;
             }
+
+            throw new InvalidOperationException("Unknown token type");
         }
 
         while (operators.Count > 0)
             AddFromOperatorsToOutput();
 
-        return rplOutput.Reverse().ToArray();
+        return rplOutput.ToArray();
 
         void AddFromOperatorsToOutput()
         {
             var topOperator = operators.Pop();
             var operation = _operationsContainer.GetOperation(topOperator.Sign);
 
-            rplOutput.Push(new()
+            rplOutput.Add(new()
             {
                 Operation = operation
             });

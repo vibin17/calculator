@@ -1,18 +1,14 @@
-﻿// See https://aka.ms/new-console-template for more information
-using Expressions.Calculator;
+﻿using Expressions.Calculator;
 using Expressions.Containers;
-using Expressions.Models;
 using Expressions.Parser;
 using Expressions.Validators;
 
-var expression = "(0,5 + 0,5) * 10 ^ (3 - 1)";
+var expression = "2 ^ (3 - 1) * (12 + 24)";
 var rpl = new ExpressionParser(
     new ArithmeticsContainer(), 
     new ExpressionValidator()
 ).Parse(expression);
 
-var rplCopy = new Stack<RplElement>(rpl.Reverse());
-
-var result = new RplCalculator().Calculate(rplCopy);
+var result = new RplCalculator().Calculate(rpl);
 
 return;
