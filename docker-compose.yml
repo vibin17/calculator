@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  api:
+    container_name: api
+    restart: on-failure
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - '5282:80'
+
+  frontend:
+    container_name: frontend
+    restart: on-failure
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
