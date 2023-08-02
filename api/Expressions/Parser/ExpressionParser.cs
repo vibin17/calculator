@@ -21,7 +21,7 @@ public class ExpressionParser : IExpressionParser
     public Stack<RplElement> Parse(string expression)
     {
         if (_expressionValidator.ContainsIllegalCharacters(expression))
-            throw new InvalidInputException("Input contains illegal characters");
+            throw new IllegalInputException("Input contains illegal characters");
 
         var (operators, rplOutput) = (new Stack<ExpressionOperator>(), new Stack<RplElement>());
         var tokens = ExpressionTokenizer.ReadTokens(expression).Select(m => m.Value);

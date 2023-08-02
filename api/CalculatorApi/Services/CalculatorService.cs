@@ -27,7 +27,7 @@ public class CalculatorService : ICalculatorService
     public double Divide(int a, int b)
     {
         if (b is 0)
-            throw new InvalidInputException("Attempt to divide by zero");
+            throw new IllegalInputException("Attempt to divide by zero");
 
         return a / (double)b;
     }

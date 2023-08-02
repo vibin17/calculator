@@ -25,12 +25,12 @@ public class RplCalculator : IRplCalculator
 
                 else if (current.Operation.Type is not 
                     (ArithmeticOperationType.Add or ArithmeticOperationType.Subtract))
-                    throw new InvalidInputException("Illegal unary operation");
+                    throw new IllegalInputException("Illegal unary operation");
 
                 var result = current.Operation.Function(left, right);
 
                 if (double.IsNaN(result) || double.IsInfinity(result))
-                    throw new InvalidInputException("Attempt to divide by zero");
+                    throw new IllegalInputException("Attempt to divide by zero");
 
                 return result;
             }
