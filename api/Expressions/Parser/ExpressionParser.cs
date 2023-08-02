@@ -18,7 +18,7 @@ public class ExpressionParser : IExpressionParser
     }
 
     // Преобразование в обратную польскую запись с помощью алгоритма Shunting Yard
-    public Stack<RplElement> Parse(string expression)
+    public IReadOnlyCollection<RplElement> Parse(string expression)
     {
         if (_expressionValidator.ContainsIllegalCharacters(expression))
             throw new IllegalInputException("Input contains illegal characters");
@@ -76,7 +76,7 @@ public class ExpressionParser : IExpressionParser
         while (operators.Count > 0)
             AddFromOperatorsToOutput();
 
-        return rplOutput;
+        return rplOutput.Reverse().ToArray();
 
         void AddFromOperatorsToOutput()
         {

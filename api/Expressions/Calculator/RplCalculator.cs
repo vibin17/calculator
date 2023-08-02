@@ -1,5 +1,4 @@
-﻿using Expressions.Enums;
-using Expressions.Exceptions;
+﻿using Expressions.Exceptions;
 using Expressions.Interfaces;
 using Expressions.Models;
 
@@ -7,21 +6,19 @@ namespace Expressions.Calculator;
 
 public class RplCalculator : IRplCalculator
 {
-    public double Calculate(Stack<RplElement> rplExpression)
+    public double Calculate(IReadOnlyCollection<RplElement> rplExpression)
     {
-        return Walk();
+        var stack = new Stack<RplElement>();
 
-        double Walk()
+        foreach (var current in rplExpression)
         {
-            var current = rplExpression.Pop();
-
             if (current.Operation is not null)
             {
-                var right = Walk();
+                var right = stack.Pop().Number;
                 var left = 0d;
 
-                if (rplExpression.Count > 0)
-                    left = Walk();
+                if (stack.Count > 0)
+                    left = stack.Pop().Number;
 
                 else if (!current.Operation.MayBeUnary)
                     throw new IllegalInputException("Illegal unary operation");
@@ -31,10 +28,17 @@ public class RplCalculator : IRplCalculator
                 if (double.IsNaN(result) || double.IsInfinity(result))
                     throw new IllegalInputException("Attempt to divide by zero");
 
-                return result;
+                stack.Push(new() { Number = result });
+
+                continue;
             }
 
-            return current.Number;
+            stack.Push(current);
         }
+
+        if (stack.Count > 1)
+            throw new InvalidOperationException("More than 1 element in stack");
+
+        return stack.Peek().Number;
     }
 }

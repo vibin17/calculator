@@ -4,5 +4,5 @@ namespace Expressions.Interfaces;
 
 public interface IExpressionParser
 {
-    public Stack<RplElement> Parse(string expression);
+    public IReadOnlyCollection<RplElement> Parse(string expression);
 }

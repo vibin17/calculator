@@ -4,5 +4,5 @@ namespace Expressions.Interfaces;
 
 public interface IRplCalculator
 {
-    public double Calculate(Stack<RplElement> rplExpression);
+    public double Calculate(IReadOnlyCollection<RplElement> rplExpression);
 }

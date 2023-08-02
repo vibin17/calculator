@@ -5,7 +5,7 @@ using Expressions.Models;
 using Expressions.Parser;
 using Expressions.Validators;
 
-var expression = "* 0,1";
+var expression = "(0,5 + 0,5) * 10 ^ (3 - 1)";
 var rpl = new ExpressionParser(
     new ArithmeticsContainer(), 
     new ExpressionValidator()
