@@ -2,6 +2,7 @@ using CalculatorApi.Filters;
 using CalculatorApi.Interfaces;
 
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace CalculatorApi.Controllers;
 
@@ -18,37 +19,45 @@ public class CalculatorController : ControllerBase
     }
 
     [HttpGet("add")]
-    public double Add([FromQuery] int a, int b)
+    public double Add(
+        [FromQuery][Required] int a, 
+        [FromQuery][Required] int b)
     {
         return _calculatorService.Add(a, b);
     }
 
     [HttpGet("sub")]
-    public double Subtract([FromQuery] int a, int b)
+    public double Subtract(
+        [FromQuery][Required] int a, 
+        [FromQuery][Required] int b)
     {
         return _calculatorService.Subtract(a, b);
     }
 
     [HttpGet("mul")]
-    public double Multiply([FromQuery] int a, int b)
+    public double Multiply(
+        [FromQuery][Required] int a, 
+        [FromQuery][Required] int b)
     {
         return _calculatorService.Multiply(a, b);
     }
 
     [HttpGet("div")]
-    public double Divide([FromQuery] int a, int b)
+    public double Divide(
+        [FromQuery][Required] int a, 
+        [FromQuery][Required] int b)
     {
         return _calculatorService.Divide(a, b);
     }
 
     [HttpGet("sqrt")]
-    public double Sqrt([FromQuery] int a)
+    public double Sqrt([FromQuery][Required] int a)
     {
         return _calculatorService.Sqrt(a);
     }
 
     [HttpGet("expr")]
-    public double CalculateExpression([FromQuery] string expression)
+    public double CalculateExpression([FromQuery][Required] string expression)
     {
         return _calculatorService.CalculateExpression(expression);
     }

@@ -1,5 +1,5 @@
 ﻿using CalculatorApi.Interfaces;
-
+using Expressions.Exceptions;
 using Expressions.Interfaces;
 
 namespace CalculatorApi.Services;
@@ -24,8 +24,13 @@ public class CalculatorService : ICalculatorService
     public double Multiply(int a, int b) =>
         a * b;
 
-    public double Divide(int a, int b) =>
-        a / (double)b;
+    public double Divide(int a, int b)
+    {
+        if (b is 0)
+            throw new InvalidInputException("Attempt to divide by zero");
+
+        return a / (double)b;
+    }
 
 
     public double Sqrt(int a) =>
